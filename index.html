@@ -171,6 +171,16 @@
     line-height:1.35; font-weight:600; margin-top:14px;
   }
 
+  .motivation{
+     
+    position:relative;
+    padding:64px 32px;
+  }
+  .motivation .eyebrow{color:var(--navy-950); opacity:0.75;}
+  .motivation h3{
+    color:var(--gold-400); font-size:clamp(1.5rem,3vw,2.2rem);
+    line-height:1.35; font-weight:600; margin-top:14px;
+  }
   /* ---------- SECTION HEADERS ---------- */
   .section{padding:110px 0 40px;}
   .section-head{max-width:680px; margin-bottom:64px;}
@@ -292,6 +302,7 @@
   .footer-meta{
     display:flex; flex-direction:column; gap:18px; justify-content:center;
   }
+
   .footer-meta .row{
     display:flex; justify-content:space-between; font-size:0.85rem;
     color:#9AA6B8; border-bottom:1px dashed rgba(255,255,255,0.12); padding-bottom:10px;
@@ -329,25 +340,55 @@
     .pillar-grid{grid-template-columns:1fr;}
     .wrap{padding:0 20px;}
   }
+
+
+  .citation {
+  position: relative;
+  margin: 2rem 0;
+  padding: 1.5rem 2rem;
+  font-style: italic;
+}
+
+.citation::before {
+  content: "“";
+  position: absolute;
+  top: -15px;
+  left: -10px;
+  font-size: 5rem;
+  color: rgba(10,20,36,0.55); /* jaune */
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.citation::after {
+  content: "”";
+  position: absolute;
+  bottom: -45px;
+  right: -10px;
+  font-size: 5rem;
+  color: rgba(10,20,36,0.55);
+  font-family: Georgia, serif;
+  line-height: 1;
+}
 </style>
 </head>
 <body>
 
 <nav id="nav">
-  <div class="nav-name">M.L. Bara <span>Thiam</span></div>
+  <div class="nav-name">M.L. Bara <span>THIAM</span></div>
   <ul class="nav-links">
     <li><a href="#mission">Mission</a></li>
     <li><a href="#programme">Programme</a></li>
     <li><a href="#valeurs">Valeurs</a></li>
     <li><a href="#engagement">Engagement</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Me contacter</a>
+  <a href="#contact" class="nav-cta"></a>
 </nav>
 
 <header class="hero">
   <div class="hero-copy">
     <div class="hero-tag">AE-SET · UFR SET</div>
-    <h1>Mouhamadou Lamine Bara<span class="last">Thiam</span></h1>
+    <h1>Mouhamadou Lamine Bara<span class="last">THIAM</span></h1>
     <div class="hero-role">Étudiant en Licence 3 <b>Informatique — Option Génie Logiciel (GL)</b><br>Candidat à la Présidence de la Commission Pédagogique</div>
     <p class="hero-quote">« Une commission pédagogique proche de ses étudiants. »</p>
     <div class="hero-scroll"><span class="dot"></span> Découvrir le programme</div>
@@ -357,10 +398,23 @@
   </div>
 </header>
 
-<section class="mission" id="mission">
+<section class="mission " id="mission">
   <div class="mission-inner reveal">
     <span class="eyebrow">Ma mission</span>
-    <h2>Faire de la Commission pédagogique un véritable pont entre les étudiants, les responsables académiques et l'administration — pour améliorer les conditions d'apprentissage, favoriser la réussite académique et renforcer l'accompagnement des étudiants.</h2>
+    <h2 class="citation">Faire de la Commission pédagogique un véritable pont entre les étudiants, les responsables académiques et l'administration — pour améliorer les conditions d'apprentissage, favoriser la réussite académique et renforcer l'accompagnement des étudiants.</h2>
+  </div>
+</section>
+
+<section class="motivation" id="mission">
+  <div class="mission-inner reveal">
+    <span class="eyebrow">Ma motivation</span>
+    <blockquote class="citation">
+      <p>
+        Mon expérience de deux années de délégué et de Premier adjoint à la Commission pédagogique m'a permis d'être à l'écoute des préoccupations des étudiants, de collaborer avec les enseignants et l'administration, et de mieux comprendre les enjeux de notre vie académique.
+
+        C'est cette double expérience qui a inspiré ce programme : un programme conçu à partir des besoins réels des étudiants, avec l'ambition de proposer des actions concrètes pour une commission pédagogique proche de ses étudiants.
+      </p>
+    </blockquote>
   </div>
 </section>
 
@@ -382,6 +436,7 @@
             <li>Réaliser un inventaire du matériel pédagogique disponible dans les salles de classe.</li>
             <li>Identifier les besoins en équipements, notamment la mise en place de zones de projection.</li>
             <li>Prendre contact avec les différentes classes afin de recueillir leurs préoccupations et attentes.</li>
+            <li>Mise en place d'un canal de communication entre les responsables de classe et la commission pédagogique.</li>
           </ul>
         </div>
       </div>
@@ -396,7 +451,7 @@
             <li>Planifier les dates d'arrivée des nouveaux bacheliers (NB).</li>
             <li>Élaborer un planning académique annuel pour chaque classe.</li>
             <li>Définir des stratégies de lutte contre le retard académique.</li>
-            <li>Sorties pédagogiques et partenariats d'alternance avec des entreprises.</li>
+            <li>Développement de partenariats avec les entreprises pour favoriser les stages et l'alternance.</li>
             <li class="grp">Responsables de classe</li>
             <li>Améliorer la gestion du Conseil de département.</li>
             <li>Mettre en place une fiche de suivi des cours pour signaler rapidement les difficultés rencontrées.</li>
@@ -419,7 +474,7 @@
           <div class="sub">Une vie associative harmonisée</div>
           <ul class="axis-list">
             <li>Harmoniser les règlements intérieurs des clubs.</li>
-            <li>Aider à la collecte de documents pour le site de partage de documents.</li>
+            <li>Contribution à la collecte de documents pour alimenter une plateforme de partage de ressources pédagogiques.li>
             <li>Encourager l'organisation d'activités conjointes entre clubs.</li>
           </ul>
         </div>
@@ -431,8 +486,8 @@
           <h3>Développement des compétences</h3>
           <div class="sub">Des formations pratiques et concrètes</div>
           <ul class="axis-list">
-            <li>La prise de parole en public, en collaboration avec le club Éloc'Art.</li>
-            <li>L'anglais, en collaboration avec le Club Anglais.</li>
+            <li>La prise de parole en public</li>
+            <li>L'anglais</li>
             <li>Les outils numériques de collaboration.</li>
             <li>La rédaction de documents administratifs (rapports, procès-verbaux, lettres, comptes rendus).</li>
             <li>La présentation des différentes filières à destination des nouveaux bacheliers.</li>
@@ -477,7 +532,7 @@
       <div class="pillar">
         <svg class="icon" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 00-3 11c.6.5 1 1.2 1 2h4c0-.8.4-1.5 1-2a6 6 0 00-3-11z"/></svg>
         <h4>Innovation</h4>
-        <p>Proposer des formats nouveaux — Sciences Arena, fiches de suivi, outils numériques — plutôt que reconduire l'existant.</p>
+        <p>Proposer des formats nouveaux ( Formations, fiches de suivi, outils numériques ) plutôt que reconduire l'existant.</p>
       </div>
       <div class="pillar">
         <svg class="icon" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M14.5 14.2c2.6.3 4.5 2.6 4.5 5.8"/></svg>
@@ -493,7 +548,7 @@
     <span class="eyebrow">Mon engagement</span>
     <blockquote>« En tant que Président de la Commission Pédagogique, je m'engage à être à l'écoute des étudiants, à défendre leurs intérêts académiques et à travailler en étroite collaboration avec l'administration et les différentes structures de l'établissement afin de construire un environnement d'apprentissage plus efficace, inclusif et dynamique. »</blockquote>
     <div class="signature">
-      <div class="name">Mouhamadou Lamine Bara Thiam</div>
+      <div class="name">Mouhamadou Lamine Bara THIAM</div>
       <div class="role">Candidat · Commission Pédagogique · AE-SET</div>
     </div>
   </div>
@@ -505,10 +560,10 @@
       <div class="reveal">
         <h3>Une commission pédagogique <span>proche de ses étudiants.</span></h3>
         <p>Ce programme n'est qu'un point de départ. S'il vous parle, parlez-m'en — vos retours nourriront chaque axe de ce mandat.</p>
-        <a href="#" class="footer-btn">Soutenir ma candidature</a>
+        <a href="#" class="footer-btn"></a>
       </div>
       <div class="footer-meta reveal">
-        <div class="row"><span>Candidat</span><b>M. L. Bara Thiam</b></div>
+        <div class="row"><span>Candidat</span><b>M. L. Bara THIAM</b></div>
         <div class="row"><span>Filière</span><b>Licence 3 — Génie Logiciel</b></div>
         <div class="row"><span>UFR</span><b>SET</b></div>
         <div class="row"><span>Association</span><b>AE-SET</b></div>
@@ -516,7 +571,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Campagne M. L. Bara Thiam — AE-SET</span>
+      <span>© 2026 Campagne M. L. Bara THIAM — AE-SET</span>
       <span>Écoute · Engagement · Innovation · Proximité</span>
     </div>
   </div>
