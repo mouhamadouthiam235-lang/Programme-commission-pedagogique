@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M. L. Bara Thiam — Commission Pédagogique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#0A1424;
+    --navy-900:#0D1B2E;
+    --navy-800:#132741;
+    --navy-700:#1B3556;
+    --gold-400:#F2A93B;
+    --gold-300:#F7C374;
+    --gold-600:#C77A1E;
+    --cream-50:#F6F2E9;
+    --cream-100:#EFE8D8;
+    --ink-900:#131A26;
+    --ink-600:#4A5568;
+    --line: rgba(242,169,59,0.25);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream-50);
+    color:var(--ink-900);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--gold-400); color:var(--navy-950);}
+
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.18em;
+    font-size:0.72rem;
+    font-weight:700;
+    color:var(--gold-600);
+  }
+  .eyebrow.on-dark{color:var(--gold-400);}
+
+  h1,h2,h3{ font-family:'Fraunces', serif; letter-spacing:-0.01em; }
+
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 32px;
+    background:rgba(10,20,36,0.0);
+    transition:background .35s ease, padding .35s ease, box-shadow .35s ease;
+  }
+  nav.scrolled{
+    background:rgba(10,20,36,0.92);
+    backdrop-filter:blur(10px);
+    padding:14px 32px;
+    box-shadow:0 4px 24px rgba(0,0,0,0.25);
+  }
+  .nav-name{
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.05rem;
+    color:#fff; letter-spacing:0.01em;
+  }
+  .nav-name span{color:var(--gold-400);}
+  .nav-links{display:flex; gap:30px; list-style:none;}
+  .nav-links a{
+    font-size:0.82rem; color:#D7DCE5; font-weight:500;
+    letter-spacing:0.02em;
+    position:relative; padding-bottom:4px;
+  }
+  .nav-links a::after{
+    content:''; position:absolute; left:0; bottom:0; height:1px; width:0;
+    background:var(--gold-400); transition:width .3s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--gold-400); color:var(--navy-950); font-weight:700;
+    font-size:0.8rem; padding:9px 18px; border-radius:2px;
+    letter-spacing:0.02em;
+  }
+  .burger{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    background:linear-gradient(160deg, var(--navy-950) 0%, var(--navy-900) 55%, var(--navy-800) 100%);
+    display:grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items:stretch;
+    overflow:hidden;
+  }
+  .hero-copy{
+    position:relative; z-index:3;
+    padding:150px 56px 90px 32px;
+    display:flex; flex-direction:column; justify-content:center;
+    max-width:640px;
+  }
+  .hero-tag{
+    display:inline-flex; align-items:center; gap:10px;
+    color:var(--gold-400); font-family:'Space Mono', monospace;
+    font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase;
+    margin-bottom:22px; font-weight:700;
+  }
+  .hero-tag::before{content:''; width:26px; height:1px; background:var(--gold-400);}
+  .hero h1{
+    color:#fff; font-size:clamp(2.6rem, 5.4vw, 4.4rem);
+    line-height:1.02; font-weight:700; margin-bottom:6px;
+  }
+  .hero h1 .last{
+    display:block; color:var(--gold-400); font-weight:900;
+    font-size:1.12em;
+  }
+  .hero-role{
+    margin-top:22px; display:inline-block;
+    border:1px solid var(--line); border-radius:3px;
+    padding:10px 16px; font-size:0.92rem; color:#D7DCE5;
+  }
+  .hero-role b{color:var(--gold-300); font-weight:600;}
+  .hero-quote{
+    margin-top:34px; font-family:'Fraunces', serif; font-style:italic;
+    font-size:1.5rem; line-height:1.35; color:#EDE6D6;
+    border-left:3px solid var(--gold-400); padding-left:20px;
+    max-width:480px;
+  }
+  .hero-scroll{
+    margin-top:56px; display:flex; align-items:center; gap:12px;
+    font-family:'Space Mono', monospace; font-size:0.7rem;
+    letter-spacing:0.14em; text-transform:uppercase; color:#9AA6B8;
+  }
+  .hero-scroll .dot{
+    width:6px; height:6px; border-radius:50%; background:var(--gold-400);
+    animation:pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:0.3} 50%{opacity:1}}
+
+  .hero-photo{
+    position:relative; z-index:2;
+    clip-path: polygon(14% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  .hero-photo img{
+    width:100%; height:100%; object-fit:cover; object-position: 50% 15%;
+    filter:saturate(1.02) contrast(1.03);
+  }
+  .hero-photo::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(0deg, rgba(10,20,36,0.55) 0%, rgba(10,20,36,0) 32%);
+  }
+  .hero-photo::before{
+    content:''; position:absolute; left:0; top:0; bottom:0; width:6px;
+    background:linear-gradient(180deg, var(--gold-400), var(--gold-600));
+    z-index:4;
+  }
+
+  /* ---------- MISSION BAND ---------- */
+  .mission{
+    background:var(--gold-400);
+    position:relative;
+    padding:64px 32px;
+  }
+  .mission-inner{
+    max-width:920px; margin:0 auto; text-align:center;
+  }
+  .mission .eyebrow{color:var(--navy-900); opacity:0.75;}
+  .mission h2{
+    color:var(--navy-950); font-size:clamp(1.5rem,3vw,2.2rem);
+    line-height:1.35; font-weight:600; margin-top:14px;
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section{padding:110px 0 40px;}
+  .section-head{max-width:680px; margin-bottom:64px;}
+  .section-head .eyebrow{margin-bottom:14px; display:block;}
+  .section-head h2{font-size:clamp(2rem,3.6vw,2.9rem); font-weight:600; color:var(--ink-900); line-height:1.08;}
+  .section-head p{margin-top:16px; color:var(--ink-600); font-size:1.02rem; line-height:1.6;}
+
+  /* ---------- AXES (TIMELINE) ---------- */
+  .axes{position:relative;}
+  .axes-rail{
+    position:absolute; left:32px; top:0; bottom:0; width:1px;
+    background:linear-gradient(180deg, transparent, var(--gold-600) 6%, var(--gold-600) 94%, transparent);
+    display:none;
+  }
+  .axis{
+    position:relative;
+    border-top:1px solid rgba(19,26,38,0.1);
+    padding:44px 0;
+    display:grid;
+    grid-template-columns: 90px 1fr;
+    gap:28px;
+    align-items:start;
+  }
+  .axis:last-child{border-bottom:1px solid rgba(19,26,38,0.1);}
+  .axis-num{
+    font-family:'Fraunces', serif; font-weight:300; font-size:3.4rem;
+    color:var(--gold-400); line-height:1; -webkit-text-stroke:1.4px var(--gold-600);
+    color:transparent;
+  }
+  .axis-body h3{
+    font-size:1.5rem; font-weight:600; color:var(--navy-900); margin-bottom:6px;
+  }
+  .axis-body .sub{
+    font-size:0.86rem; color:var(--gold-600); font-weight:600;
+    text-transform:uppercase; letter-spacing:0.06em; margin-bottom:16px;
+  }
+  .axis-list{list-style:none; display:grid; gap:10px; max-width:760px;}
+  .axis-list li{
+    position:relative; padding-left:22px; color:var(--ink-600);
+    line-height:1.55; font-size:0.98rem;
+  }
+  .axis-list li::before{
+    content:'—'; position:absolute; left:0; top:0; color:var(--gold-400); font-weight:700;
+  }
+  .axis-list .grp{
+    margin-top:14px; font-weight:600; color:var(--ink-900); font-size:0.92rem;
+    padding-left:0;
+  }
+  .axis-list .grp::before{content:none;}
+
+  /* ---------- PILLARS / VALEURS ---------- */
+  .pillars{
+    background:var(--navy-950);
+    padding:90px 0;
+  }
+  .pillars .eyebrow{color:var(--gold-400);}
+  .pillars h2{color:#fff; font-size:clamp(1.9rem,3.2vw,2.5rem); font-weight:600; margin-top:12px; max-width:600px;}
+  .pillar-grid{
+    margin-top:56px; display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:rgba(255,255,255,0.08);
+  }
+  .pillar{
+    background:var(--navy-950); padding:36px 26px;
+    transition:background .3s ease;
+  }
+  .pillar:hover{background:var(--navy-800);}
+  .pillar .icon{
+    width:38px; height:38px; margin-bottom:20px;
+    stroke:var(--gold-400); fill:none; stroke-width:1.6;
+  }
+  .pillar h4{
+    font-family:'Space Mono', monospace; color:#fff; font-size:0.86rem;
+    letter-spacing:0.08em; text-transform:uppercase; margin-bottom:10px;
+  }
+  .pillar p{color:#9AA6B8; font-size:0.88rem; line-height:1.55;}
+
+  /* ---------- ENGAGEMENT ---------- */
+  .engagement{
+    padding:120px 0; background:var(--cream-100);
+    position:relative;
+  }
+  .engagement-inner{
+    max-width:840px; margin:0 auto; text-align:center;
+  }
+  .engagement blockquote{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:500;
+    font-size:clamp(1.4rem,2.6vw,1.9rem); line-height:1.5; color:var(--navy-900);
+  }
+  .signature{
+    margin-top:42px; display:flex; flex-direction:column; align-items:center; gap:6px;
+  }
+  .signature .name{
+    font-family:'Fraunces', serif; font-weight:700; font-size:1.3rem; color:var(--navy-950);
+    border-top:1px solid var(--ink-900); padding-top:10px; margin-top:8px;
+  }
+  .signature .role{
+    font-family:'Space Mono', monospace; font-size:0.72rem; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--gold-600);
+  }
+
+  /* ---------- FOOTER / CONTACT ---------- */
+  footer{
+    background:var(--navy-950); color:#fff; padding:70px 0 32px;
+  }
+  .footer-top{
+    display:grid; grid-template-columns:1.3fr 1fr; gap:60px; padding-bottom:56px;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+  .footer-top h3{
+    font-size:clamp(1.6rem,2.8vw,2.1rem); font-weight:600; line-height:1.2; margin-bottom:20px;
+  }
+  .footer-top h3 span{color:var(--gold-400);}
+  .footer-top p{color:#9AA6B8; font-size:0.96rem; line-height:1.6; max-width:440px;}
+  .footer-btn{
+    margin-top:28px; display:inline-block; background:var(--gold-400); color:var(--navy-950);
+    font-weight:700; padding:13px 26px; border-radius:2px; font-size:0.88rem;
+    letter-spacing:0.02em;
+  }
+  .footer-meta{
+    display:flex; flex-direction:column; gap:18px; justify-content:center;
+  }
+  .footer-meta .row{
+    display:flex; justify-content:space-between; font-size:0.85rem;
+    color:#9AA6B8; border-bottom:1px dashed rgba(255,255,255,0.12); padding-bottom:10px;
+  }
+  .footer-meta .row b{color:#fff; font-weight:600;}
+  .footer-bottom{
+    padding-top:26px; display:flex; justify-content:space-between; align-items:center;
+    font-size:0.76rem; color:#6E7A8C; flex-wrap:wrap; gap:10px;
+  }
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.visible{opacity:1; transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    .hero-scroll .dot{animation:none;}
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:920px){
+    .hero{grid-template-columns:1fr;}
+    .hero-photo{
+      order:-1; height:52vh; clip-path:polygon(0 0,100% 0,100% 92%, 0 100%);
+    }
+    .hero-copy{padding:36px 24px 60px;}
+    .nav-links{display:none;}
+    .pillar-grid{grid-template-columns:repeat(2,1fr);}
+    .footer-top{grid-template-columns:1fr;}
+    .axis{grid-template-columns:56px 1fr;}
+    .axis-num{font-size:2.2rem;}
+    .section{padding:70px 0 20px;}
+  }
+  @media (max-width:560px){
+    .pillar-grid{grid-template-columns:1fr;}
+    .wrap{padding:0 20px;}
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-name">M.L. Bara <span>Thiam</span></div>
+  <ul class="nav-links">
+    <li><a href="#mission">Mission</a></li>
+    <li><a href="#programme">Programme</a></li>
+    <li><a href="#valeurs">Valeurs</a></li>
+    <li><a href="#engagement">Engagement</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Me contacter</a>
+</nav>
+
+<header class="hero">
+  <div class="hero-copy">
+    <div class="hero-tag">AE-SET · UFR SET</div>
+    <h1>Mouhamadou Lamine Bara<span class="last">Thiam</span></h1>
+    <div class="hero-role">Étudiant en Licence 3 <b>Informatique — Option Génie Logiciel (GL)</b><br>Candidat à la Présidence de la Commission Pédagogique</div>
+    <p class="hero-quote">« Une commission pédagogique proche de ses étudiants. »</p>
+    <div class="hero-scroll"><span class="dot"></span> Découvrir le programme</div>
+  </div>
+  <div class="hero-photo">
+    <img src="portrait.jpeg" alt="Mouhamadou Lamine Bara Thiam">
+  </div>
+</header>
+
+<section class="mission" id="mission">
+  <div class="mission-inner reveal">
+    <span class="eyebrow">Ma mission</span>
+    <h2>Faire de la Commission pédagogique un véritable pont entre les étudiants, les responsables académiques et l'administration — pour améliorer les conditions d'apprentissage, favoriser la réussite académique et renforcer l'accompagnement des étudiants.</h2>
+  </div>
+</section>
+
+<main class="wrap">
+  <section class="section" id="programme">
+    <div class="section-head reveal">
+      <span class="eyebrow">Mon programme</span>
+      <h2>Cinq axes pour une vie académique dynamique</h2>
+      <p>Un plan d'action construit autour du terrain : diagnostiquer les besoins réels, tisser des liens solides avec les acteurs académiques, structurer la vie associative, outiller les étudiants et multiplier les occasions de s'orienter.</p>
+    </div>
+
+    <div class="axes">
+      <div class="axis reveal">
+        <div class="axis-num">01</div>
+        <div class="axis-body">
+          <h3>Organisation et diagnostic</h3>
+          <div class="sub">Comprendre avant d'agir</div>
+          <ul class="axis-list">
+            <li>Réaliser un inventaire du matériel pédagogique disponible dans les salles de classe.</li>
+            <li>Identifier les besoins en équipements, notamment la mise en place de zones de projection.</li>
+            <li>Prendre contact avec les différentes classes afin de recueillir leurs préoccupations et attentes.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="axis reveal">
+        <div class="axis-num">02</div>
+        <div class="axis-body">
+          <h3>Renforcement de la collaboration avec les acteurs académiques</h3>
+          <div class="sub">Travailler main dans la main</div>
+          <ul class="axis-list">
+            <li class="grp">Chefs de département et de filière</li>
+            <li>Planifier les dates d'arrivée des nouveaux bacheliers (NB).</li>
+            <li>Élaborer un planning académique annuel pour chaque classe.</li>
+            <li>Définir des stratégies de lutte contre le retard académique.</li>
+            <li>Sorties pédagogiques et partenariats d'alternance avec des entreprises.</li>
+            <li class="grp">Responsables de classe</li>
+            <li>Améliorer la gestion du Conseil de département.</li>
+            <li>Mettre en place une fiche de suivi des cours pour signaler rapidement les difficultés rencontrées.</li>
+
+            <li class="grp">DSOS</li>
+            <li>Suivre les statistiques des nouveaux bacheliers.</li>
+            <li>Faire le point sur les inscriptions et les difficultés rencontrées par les étudiants.</li>
+            <li class="grp">Direction </li>
+            
+            <li>Présenter et remettre l'inventaire des besoins matériels.</li>
+            <li>Suivie de l'amélioration des matériels pédagogiques</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="axis reveal">
+        <div class="axis-num">03</div>
+        <div class="axis-body">
+          <h3>Coordination des clubs</h3>
+          <div class="sub">Une vie associative harmonisée</div>
+          <ul class="axis-list">
+            <li>Harmoniser les règlements intérieurs des clubs.</li>
+            <li>Aider à la collecte de documents pour le site de partage de documents.</li>
+            <li>Encourager l'organisation d'activités conjointes entre clubs.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="axis reveal">
+        <div class="axis-num">04</div>
+        <div class="axis-body">
+          <h3>Développement des compétences</h3>
+          <div class="sub">Des formations pratiques et concrètes</div>
+          <ul class="axis-list">
+            <li>La prise de parole en public, en collaboration avec le club Éloc'Art.</li>
+            <li>L'anglais, en collaboration avec le Club Anglais.</li>
+            <li>Les outils numériques de collaboration.</li>
+            <li>La rédaction de documents administratifs (rapports, procès-verbaux, lettres, comptes rendus).</li>
+            <li>La présentation des différentes filières à destination des nouveaux bacheliers.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="axis reveal">
+        <div class="axis-num">05</div>
+        <div class="axis-body">
+          <h3>Activités pédagogiques et d'orientation</h3>
+          <div class="sub">Ouvrir les horizons</div>
+          <ul class="axis-list">
+            <li>Organisation des compétitions de jeux pédagogiques.</li>
+            <li>Organisation de conférences scientifiques et professionnelles.</li>
+            <li>Ateliers sur l'insertion professionnelle avec des responsables RH, des enseignants et des alumnis de chaque filière.</li>
+            <li>Projections de films et de documentaires à vocation scientifique, culturelle et éducative.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="pillars" id="valeurs">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Mes valeurs</span>
+      <h2>Quatre principes qui guident chaque décision</h2>
+    </div>
+    <div class="pillar-grid reveal">
+      <div class="pillar">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M3 5c4 3 8-2 12 0v11c-4-2-8 3-12 0V5z"/><path d="M12 5v11" stroke-dasharray="1 3"/></svg>
+        <h4>Écoute</h4>
+        <p>Rester disponible pour recueillir les préoccupations réelles des étudiants, classe par classe.</p>
+      </div>
+      <div class="pillar">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M8 12l3 3 6-6"/><circle cx="12" cy="12" r="9"/></svg>
+        <h4>Engagement</h4>
+        <p>Défendre les intérêts académiques des étudiants avec constance, du premier au dernier jour du mandat.</p>
+      </div>
+      <div class="pillar">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 00-3 11c.6.5 1 1.2 1 2h4c0-.8.4-1.5 1-2a6 6 0 00-3-11z"/></svg>
+        <h4>Innovation</h4>
+        <p>Proposer des formats nouveaux — Sciences Arena, fiches de suivi, outils numériques — plutôt que reconduire l'existant.</p>
+      </div>
+      <div class="pillar">
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M14.5 14.2c2.6.3 4.5 2.6 4.5 5.8"/></svg>
+        <h4>Proximité</h4>
+        <p>Aller vers les responsables de classe et les partenaires plutôt que d'attendre qu'ils viennent.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="engagement" id="engagement">
+  <div class="wrap engagement-inner reveal">
+    <span class="eyebrow">Mon engagement</span>
+    <blockquote>« En tant que Président de la Commission Pédagogique, je m'engage à être à l'écoute des étudiants, à défendre leurs intérêts académiques et à travailler en étroite collaboration avec l'administration et les différentes structures de l'établissement afin de construire un environnement d'apprentissage plus efficace, inclusif et dynamique. »</blockquote>
+    <div class="signature">
+      <div class="name">Mouhamadou Lamine Bara Thiam</div>
+      <div class="role">Candidat · Commission Pédagogique · AE-SET</div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="reveal">
+        <h3>Une commission pédagogique <span>proche de ses étudiants.</span></h3>
+        <p>Ce programme n'est qu'un point de départ. S'il vous parle, parlez-m'en — vos retours nourriront chaque axe de ce mandat.</p>
+        <a href="#" class="footer-btn">Soutenir ma candidature</a>
+      </div>
+      <div class="footer-meta reveal">
+        <div class="row"><span>Candidat</span><b>M. L. Bara Thiam</b></div>
+        <div class="row"><span>Filière</span><b>Licence 3 — Génie Logiciel</b></div>
+        <div class="row"><span>UFR</span><b>SET</b></div>
+        <div class="row"><span>Association</span><b>AE-SET</b></div>
+        <div class="row"><span>Poste visé</span><b>Président, Commission Pédagogique</b></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Campagne M. L. Bara Thiam — AE-SET</span>
+      <span>Écoute · Engagement · Innovation · Proximité</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
